@@ -58,7 +58,7 @@ const chart = new Chart(ctx, {
         plugins: {
             title: {
                 display: true,
-                text: 'Asset Growth Over 10 Years (Indexed to 100)',
+                text: 'Asset Growth Comparison (Logarithmic Scale)',
                 color: colors.textColor,
                 font: {
                     size: 18,
@@ -74,6 +74,10 @@ const chart = new Chart(ctx, {
                         family: 'Poppins'
                     }
                 }
+            },
+            tooltip: {
+                mode: 'index',
+                intersect: false
             }
         },
         scales: {
@@ -82,7 +86,18 @@ const chart = new Chart(ctx, {
                 grid: { color: colors.gridColor }
             },
             y: {
-                ticks: { color: colors.textColor },
+                type: 'logarithmic',
+                title: {
+                    display: true,
+                    text: 'Value (Indexed to 100)',
+                    color: colors.textColor
+                },
+                ticks: { 
+                    color: colors.textColor,
+                    callback: function(value, index, values) {
+                        return value.toLocaleString();
+                    }
+                },
                 grid: { color: colors.gridColor }
             }
         }
@@ -107,6 +122,5 @@ themeToggle.addEventListener('click', () => {
     const isLightMode = body.classList.contains('light-mode');
     themeToggle.textContent = isLightMode ? 'Switch to Dark Mode' : 'Switch to Light Mode';
     
-    // Small timeout to ensure CSS variables are updated before reading them
     setTimeout(updateChartTheme, 50);
 });
