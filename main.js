@@ -8,6 +8,7 @@ const years = Array.from({ length: 11 }, (_, i) => 2014 + i);
 const sp500Data = [100, 99, 119, 142, 135, 175, 205, 265, 218, 270, 310];
 const goldData = [100, 102, 110, 125, 122, 148, 185, 178, 175, 190, 210];
 const bitcoinData = [100, 115, 250, 3800, 1100, 2000, 8000, 12500, 5000, 11000, 16000];
+const reData = [100, 108, 115, 125, 135, 145, 155, 175, 195, 210, 230];
 
 
 function getThemeColors() {
@@ -17,7 +18,8 @@ function getThemeColors() {
         gridColor: style.getPropertyValue('--grid-color').trim(),
         bitcoinColor: style.getPropertyValue('--bitcoin-color').trim(),
         goldColor: style.getPropertyValue('--gold-color').trim(),
-        sp500Color: style.getPropertyValue('--sp500-color').trim()
+        sp500Color: style.getPropertyValue('--sp500-color').trim(),
+        reColor: style.getPropertyValue('--re-color').trim()
     };
 }
 
@@ -49,6 +51,14 @@ const chart = new Chart(ctx, {
                 data: bitcoinData,
                 borderColor: colors.bitcoinColor,
                 backgroundColor: 'rgba(247, 147, 26, 0.1)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'Real Estate',
+                data: reData,
+                borderColor: colors.reColor,
+                backgroundColor: 'rgba(76, 175, 80, 0.1)',
                 tension: 0.4,
                 fill: true
             }
