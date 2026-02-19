@@ -9,6 +9,7 @@ const sp500Data = [100, 99, 119, 142, 135, 175, 205, 265, 218, 270, 310];
 const goldData = [100, 102, 110, 125, 122, 148, 185, 178, 175, 190, 210];
 const bitcoinData = [100, 115, 250, 3800, 1100, 2000, 8000, 12500, 5000, 11000, 16000];
 const reData = [100, 108, 115, 125, 135, 145, 155, 175, 195, 210, 230];
+const m2Data = [100, 106, 113, 119, 125, 132, 155, 177, 181, 172, 168];
 
 
 function getThemeColors() {
@@ -19,7 +20,8 @@ function getThemeColors() {
         bitcoinColor: style.getPropertyValue('--bitcoin-color').trim(),
         goldColor: style.getPropertyValue('--gold-color').trim(),
         sp500Color: style.getPropertyValue('--sp500-color').trim(),
-        reColor: style.getPropertyValue('--re-color').trim()
+        reColor: style.getPropertyValue('--re-color').trim(),
+        m2Color: style.getPropertyValue('--m2-color').trim()
     };
 }
 
@@ -59,6 +61,14 @@ const chart = new Chart(ctx, {
                 data: reData,
                 borderColor: colors.reColor,
                 backgroundColor: 'rgba(76, 175, 80, 0.1)',
+                tension: 0.4,
+                fill: true
+            },
+            {
+                label: 'Money Supply (M2)',
+                data: m2Data,
+                borderColor: colors.m2Color,
+                backgroundColor: 'rgba(233, 30, 99, 0.1)',
                 tension: 0.4,
                 fill: true
             }
