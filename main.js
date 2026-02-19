@@ -222,23 +222,23 @@ resetBtn.addEventListener('click', resetChart);
 
 // US National Debt Ticker Logic
 const debtCounter = document.getElementById('debt-counter');
-// Base debt as of Feb 2026 (Estimate: $38.25T)
-let baseDebt = 38250000000000;
-// Growth rate: ~$2.7T per year ≈ $85,616 per second
-const growthPerSecond = 85616;
+// Base debt as of Feb 2026 (Estimate based on current trends: ~$38.5T)
+let baseDebt = 38500000000000;
+// Growth rate: Increasing based on usdebtclock.org trends (approx $100k/sec for 2026)
+const growthPerSecond = 100000;
 const updateInterval = 50; // ms
 const growthPerUpdate = (growthPerSecond * updateInterval) / 1000;
 
-// Country Debt Data (Estimates for early 2026)
+// Country Debt Data (Reflecting world-debt-clock visual speeds for 2026)
 const countryDebtData = [
-    { name: "South Korea", debt: 1250000000000, growth: 1600, currency: "KRW", rate: 1400, label: "₩" },
-    { name: "Japan", debt: 1320000000000000, growth: 650000, currency: "JPY", label: "¥" },
-    { name: "United Kingdom", debt: 2850000000000, growth: 4200, currency: "GBP", label: "£" },
-    { name: "Germany", debt: 2650000000000, growth: 1500, currency: "EUR", label: "€" },
-    { name: "China", debt: 15500000000000, growth: 45000, currency: "USD", label: "$" },
-    { name: "India", debt: 3200000000000, growth: 8500, currency: "USD", label: "$" },
-    { name: "France", debt: 3300000000000, growth: 3800, currency: "EUR", label: "€" },
-    { name: "Canada", debt: 1450000000000, growth: 1200, currency: "CAD", label: "CA$" }
+    { name: "South Korea", debt: 1350000000000, growth: 2500000, currency: "KRW", rate: 1400, label: "₩" },
+    { name: "Japan", debt: 1380000000000000, growth: 2000000, currency: "JPY", label: "¥" },
+    { name: "United Kingdom", debt: 2950000000000, growth: 5500, currency: "GBP", label: "£" },
+    { name: "Germany", debt: 2750000000000, growth: 3200, currency: "EUR", label: "€" },
+    { name: "China", debt: 16500000000000, growth: 55000, currency: "USD", label: "$" },
+    { name: "India", debt: 3500000000000, growth: 12000, currency: "USD", label: "$" },
+    { name: "France", debt: 3450000000000, growth: 4800, currency: "EUR", label: "€" },
+    { name: "Canada", debt: 1550000000000, growth: 1800, currency: "CAD", label: "CA$" }
 ];
 
 const countrySearch = document.getElementById('country-search');
