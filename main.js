@@ -252,6 +252,8 @@ const clearBtn = document.getElementById('clear-compare-btn');
 let selectedCountry = null;
 let currentCompareDebt = 0;
 
+const inflationMessage = document.getElementById('inflation-message');
+
 function updateDebt() {
     baseDebt += growthPerUpdate;
     debtCounter.textContent = '$' + Math.floor(baseDebt).toLocaleString();
@@ -260,6 +262,23 @@ function updateDebt() {
         const compareGrowthPerUpdate = (selectedCountry.growth * updateInterval) / 1000;
         currentCompareDebt += compareGrowthPerUpdate;
         compareCounter.textContent = selectedCountry.label + Math.floor(currentCompareDebt).toLocaleString();
+        
+        // Big Mac Inflation Calculation
+        // Assuming a Big Mac is roughly $5.50 USD / ₩7,000 KRW / ¥500 JPY etc.
+        // We simulate a daily inflation rate linked to debt growth
+        const now = new Date();
+        const secondsPassedToday = (now.getHours() * 3600) + (now.getMinutes() * 60) + now.getSeconds();
+        const dailyRate = 0.0004; // 0.04% estimated daily purchasing power loss impact
+        
+        let basePrice = 5.5; // Default USD
+        if (selectedCountry.name === "South Korea") basePrice = 7000;
+        if (selectedCountry.name === "Japan") basePrice = 550;
+        if (selectedCountry.name === "United Kingdom") basePrice = 4.5;
+        if (selectedCountry.name === "Germany" || selectedCountry.name === "France") basePrice = 5.0;
+
+        const priceIncrease = (basePrice * dailyRate) * (secondsPassedToday / 86400);
+        
+        inflationMessage.innerHTML = `Due to rapid debt growth, the **Big Mac** you'll eat today is estimated to be **${selectedCountry.label}${priceIncrease.toFixed(selectedCountry.name === "South Korea" || selectedCountry.name === "Japan" ? 2 : 3)}** more expensive than yesterday.`.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
     }
 }
 
