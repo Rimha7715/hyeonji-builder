@@ -229,9 +229,87 @@ const growthPerSecond = 85616;
 const updateInterval = 50; // ms
 const growthPerUpdate = (growthPerSecond * updateInterval) / 1000;
 
+// Country Debt Data (Estimates for early 2026)
+const countryDebtData = [
+    { name: "South Korea", debt: 1250000000000, growth: 1600, currency: "KRW", rate: 1400, label: "₩" },
+    { name: "Japan", debt: 1320000000000000, growth: 650000, currency: "JPY", label: "¥" },
+    { name: "United Kingdom", debt: 2850000000000, growth: 4200, currency: "GBP", label: "£" },
+    { name: "Germany", debt: 2650000000000, growth: 1500, currency: "EUR", label: "€" },
+    { name: "China", debt: 15500000000000, growth: 45000, currency: "USD", label: "$" },
+    { name: "India", debt: 3200000000000, growth: 8500, currency: "USD", label: "$" },
+    { name: "France", debt: 3300000000000, growth: 3800, currency: "EUR", label: "€" },
+    { name: "Canada", debt: 1450000000000, growth: 1200, currency: "CAD", label: "CA$" }
+];
+
+const countrySearch = document.getElementById('country-search');
+const searchResults = document.getElementById('search-results');
+const compareBox = document.getElementById('compare-debt-box');
+const compareName = document.getElementById('compare-country-name');
+const compareCounter = document.getElementById('compare-debt-counter');
+const compareSubtext = document.getElementById('compare-debt-subtext');
+const clearBtn = document.getElementById('clear-compare-btn');
+
+let selectedCountry = null;
+let currentCompareDebt = 0;
+
 function updateDebt() {
     baseDebt += growthPerUpdate;
     debtCounter.textContent = '$' + Math.floor(baseDebt).toLocaleString();
+
+    if (selectedCountry) {
+        const compareGrowthPerUpdate = (selectedCountry.growth * updateInterval) / 1000;
+        currentCompareDebt += compareGrowthPerUpdate;
+        compareCounter.textContent = selectedCountry.label + Math.floor(currentCompareDebt).toLocaleString();
+    }
 }
+
+countrySearch.addEventListener('input', (e) => {
+    const val = e.target.value.toLowerCase();
+    searchResults.innerHTML = '';
+    if (!val) {
+        searchResults.style.display = 'none';
+        return;
+    }
+
+    const filtered = countryDebtData.filter(c => c.name.toLowerCase().includes(val));
+    if (filtered.length > 0) {
+        filtered.forEach(c => {
+            const div = document.createElement('div');
+            div.className = 'search-item';
+            div.textContent = c.name;
+            div.addEventListener('click', () => selectCountry(c));
+            searchResults.appendChild(div);
+        });
+        searchResults.style.display = 'block';
+    } else {
+        searchResults.style.display = 'none';
+    }
+});
+
+function selectCountry(country) {
+    selectedCountry = country;
+    currentCompareDebt = country.debt;
+    compareName.textContent = `LIVE: ${country.name} Debt Estimate`;
+    compareSubtext.textContent = `Increasing by approximately ${country.label}${country.growth.toLocaleString()} every second.`;
+    
+    compareBox.style.display = 'block';
+    clearBtn.style.display = 'block';
+    searchResults.style.display = 'none';
+    countrySearch.value = country.name;
+}
+
+clearBtn.addEventListener('click', () => {
+    selectedCountry = null;
+    compareBox.style.display = 'none';
+    clearBtn.style.display = 'none';
+    countrySearch.value = '';
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+    if (!countrySearch.contains(e.target) && !searchResults.contains(e.target)) {
+        searchResults.style.display = 'none';
+    }
+});
 
 setInterval(updateDebt, updateInterval);

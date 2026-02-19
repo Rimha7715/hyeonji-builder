@@ -69,13 +69,32 @@
         </section>
 
         <div class="chart-container">
-            <div class="debt-clock-box">
-                <div class="debt-header">
-                    <span class="live-indicator"></span>
-                    <h4>LIVE: US National Debt Estimate</h4>
+            <div id="debt-clocks-container">
+                <div class="debt-clock-box">
+                    <div class="debt-header">
+                        <span class="live-indicator"></span>
+                        <h4>LIVE: US National Debt Estimate</h4>
+                    </div>
+                    <div id="debt-counter" class="debt-number">$38,250,000,000,000</div>
+                    <p class="debt-subtext">The US debt is increasing by approximately $85,600 every second.</p>
                 </div>
-                <div id="debt-counter" class="debt-number">$38,250,000,000,000</div>
-                <p class="debt-subtext">The debt is increasing by approximately $85,000 every second.</p>
+
+                <div id="compare-debt-box" class="debt-clock-box secondary" style="display: none;">
+                    <div class="debt-header">
+                        <span class="live-indicator blue"></span>
+                        <h4 id="compare-country-name">LIVE: Country Debt Estimate</h4>
+                    </div>
+                    <div id="compare-debt-counter" class="debt-number">$0</div>
+                    <p id="compare-debt-subtext" class="debt-subtext">Debt is increasing in real-time.</p>
+                </div>
+            </div>
+
+            <div class="country-search-container">
+                <div class="search-wrapper">
+                    <input type="text" id="country-search" placeholder="Search Country (e.g. South Korea, Japan...)" autocomplete="off">
+                    <div id="search-results" class="search-dropdown"></div>
+                </div>
+                <button id="clear-compare-btn" class="action-btn secondary small" style="display: none;">Clear Comparison</button>
             </div>
             <div class="analysis-controls">
                 <input type="number" id="year-input" min="2014" max="2024" placeholder="Enter Year (2014-2024)">
