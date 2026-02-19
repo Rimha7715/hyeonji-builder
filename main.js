@@ -219,3 +219,19 @@ function resetChart() {
 
 analyzeBtn.addEventListener('click', analyzeYear);
 resetBtn.addEventListener('click', resetChart);
+
+// US National Debt Ticker Logic
+const debtCounter = document.getElementById('debt-counter');
+// Base debt as of Feb 2026 (Estimate: $38.25T)
+let baseDebt = 38250000000000;
+// Growth rate: ~$2.7T per year ≈ $85,616 per second
+const growthPerSecond = 85616;
+const updateInterval = 50; // ms
+const growthPerUpdate = (growthPerSecond * updateInterval) / 1000;
+
+function updateDebt() {
+    baseDebt += growthPerUpdate;
+    debtCounter.textContent = '$' + Math.floor(baseDebt).toLocaleString();
+}
+
+setInterval(updateDebt, updateInterval);
