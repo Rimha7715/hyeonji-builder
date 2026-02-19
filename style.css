@@ -90,6 +90,73 @@ header p {
         0px 20px 45px rgba(0, 0, 0, 0.35);
 }
 
+.contact-form-container {
+    width: 90%;
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: var(--card-background-color);
+    border-radius: 20px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.contact-form-container h2 {
+    color: var(--title-color);
+    margin-top: 0;
+}
+
+.contact-form-container p {
+    color: var(--subtitle-color);
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid var(--grid-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.form-group textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: var(--bitcoin-color);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.3s ease;
+}
+
+.submit-btn:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
 
 @media (max-width: 768px) {
     header h1 {
