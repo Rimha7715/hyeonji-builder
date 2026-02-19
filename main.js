@@ -2,11 +2,13 @@ const ctx = document.getElementById('asset-chart').getContext('2d');
 const themeToggle = document.getElementById('theme-toggle');
 const body = document.body;
 
-const years = Array.from({ length: 13 }, (_, i) => 2014 + i);
+const years = Array.from({ length: 11 }, (_, i) => 2014 + i);
 
-const sp500Data = [100, 112, 120, 142, 138, 180, 210, 250, 230, 280, 320, 350, 385];
-const goldData = [100, 95, 110, 115, 120, 145, 180, 175, 160, 185, 195, 210, 230];
-const bitcoinData = [100, 250, 1500, 12000, 4000, 8000, 30000, 50000, 20000, 65000, 45000, 100000, 120000];
+// Real-world indexed data (2014 = 100)
+const sp500Data = [100, 99, 119, 142, 135, 175, 205, 265, 218, 270, 310];
+const goldData = [100, 102, 110, 125, 122, 148, 185, 178, 175, 190, 210];
+const bitcoinData = [100, 115, 250, 3800, 1100, 2000, 8000, 12500, 5000, 11000, 16000];
+
 
 function getThemeColors() {
     const style = getComputedStyle(document.body);
