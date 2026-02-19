@@ -1,1 +1,69 @@
-/* Add styles here */
+
+:root {
+    --background-color: #121212;
+    --card-background-color: #1E1E1E;
+    --text-color: #E0E0E0;
+    --title-color: #FFFFFF;
+    --subtitle-color: #B0B0B0;
+    --grid-color: rgba(255, 255, 255, 0.1);
+    --bitcoin-color: #F7931A;
+    --gold-color: #FFD700;
+    --sp500-color: #42a5f5;
+    --font-family: 'Poppins', sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"%3E%3Cfilter id="n"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="10" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23n)" opacity="0.03"/%3E%3C/svg%3E');
+}
+
+header h1 {
+    font-size: 3em;
+    font-weight: 700;
+    color: var(--title-color);
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.2em;
+    font-weight: 400;
+    color: var(--subtitle-color);
+    margin-top: 0;
+}
+
+.chart-container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--card-background-color);
+    border-radius: 20px;
+    box-shadow: 
+        0px 5px 15px rgba(0, 0, 0, 0.2),
+        0px 15px 35px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chart-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0px 8px 20px rgba(0, 0, 0, 0.25),
+        0px 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
+
+    .chart-container {
+        width: 95%;
+        padding: 20px;
+    }
+}
