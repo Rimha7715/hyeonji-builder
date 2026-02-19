@@ -92,9 +92,10 @@ header p {
 
 .contact-form-container,
 .comments-container,
-.animal-test-container {
+.animal-test-container,
+.content-text-section {
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
     margin: 40px auto;
     padding: 30px;
     background-color: var(--card-background-color);
@@ -106,9 +107,60 @@ header p {
 
 .contact-form-container h2,
 .comments-container h2,
-.animal-test-container h2 {
+.animal-test-container h2,
+.content-text-section h2,
+.content-text-section h3 {
     color: var(--title-color);
     margin-top: 0;
+}
+
+.main-nav {
+    margin-bottom: 20px;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.main-nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.main-nav a:hover {
+    color: var(--bitcoin-color);
+}
+
+.insight-list {
+    padding-left: 20px;
+}
+
+.insight-list li {
+    margin-bottom: 10px;
+}
+
+.site-footer {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background-color: var(--card-background-color);
+    color: var(--subtitle-color);
+    font-size: 0.9em;
+}
+
+.footer-nav a {
+    color: var(--subtitle-color);
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
 }
 
 #test-wrapper {

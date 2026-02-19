@@ -17,18 +17,41 @@
 </head>
 <body>
     <button id="theme-toggle">Switch to Light Mode</button>
+    
+    <nav class="main-nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+        </ul>
+    </nav>
+
     <header>
         <h1>10-Year Asset Growth Comparison</h1>
-        <p>Bitcoin vs. Gold vs. Stock Market (S&P 500)</p>
+        <p>Analyzing Bitcoin, Gold, and the S&P 500 Market Performance</p>
     </header>
     <main>
+        <section class="content-text-section">
+            <h2>Understanding Asset Growth Over a Decade</h2>
+            <p>Choosing where to invest requires a long-term perspective. Over the last 10 years, we have seen unprecedented volatility and growth across different asset classes. This tool provides a comparative visualization of three distinct pillars of the financial world: <strong>Bitcoin</strong> (Digital Asset), <strong>Gold</strong> (Traditional Store of Value), and the <strong>S&P 500</strong> (Equity Market Benchmark).</p>
+        </section>
+
         <div class="chart-container">
             <canvas id="asset-chart"></canvas>
         </div>
 
+        <section class="content-text-section">
+            <h3>Key Insights from the Data</h3>
+            <ul class="insight-list">
+                <li><strong>Bitcoin:</strong> Known for extreme volatility but significant long-term appreciation, Bitcoin represents the emergence of decentralized finance.</li>
+                <li><strong>Gold:</strong> Traditionally used as a hedge against inflation, gold maintains a steady, albeit slower, growth trajectory compared to high-risk assets.</li>
+                <li><strong>S&P 500:</strong> Representing the 500 largest companies in the US, it serves as a reliable indicator of corporate health and economic expansion.</li>
+            </ul>
+        </section>
+
         <section class="animal-test-container">
-            <h2>Animal Face Test</h2>
-            <p>Upload a photo to see if you're more like a Dog or a Cat!</p>
+            <h2>AI-Powered Animal Face Test</h2>
+            <p>Our interactive animal face test uses the latest Teachable Machine AI models to analyze facial features and determine which animal aesthetic you resemble most. Whether you have the sharp, independent gaze of a cat or the warm, loyal expression of a dog, our AI provides an instant, fun analysis.</p>
             <div id="test-wrapper">
                 <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
                 <button type="button" id="upload-btn" class="submit-btn" onclick="document.getElementById('image-upload').click()">Upload Image</button>
@@ -36,6 +59,9 @@
                     <img id="image-preview" src="#" alt="Your photo" style="max-width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
                 </div>
                 <div id="label-container" style="margin-top: 20px;"></div>
+            </div>
+            <div class="test-description" style="margin-top: 20px; font-size: 0.9em; color: var(--subtitle-color);">
+                <p>Note: Your privacy is important. Image processing happens locally in your browser, and no images are stored on our servers.</p>
             </div>
         </section>
 
@@ -56,7 +82,8 @@
         </section>
 
         <section class="comments-container">
-            <h2>Comments</h2>
+            <h2>Community Discussion</h2>
+            <p>Share your thoughts on the asset comparison or your animal test results below!</p>
             <div id="disqus_thread"></div>
             <script>
                 /**
@@ -78,6 +105,16 @@
             <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2026 Asset Growth Insights. All rights reserved.</p>
+            <nav class="footer-nav">
+                <a href="about.html">About Us</a> | 
+                <a href="privacy.html">Privacy Policy</a>
+            </nav>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="animal-test.js"></script>
     <script src="main.js"></script>
