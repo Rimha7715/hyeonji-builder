@@ -90,7 +90,9 @@ header p {
         0px 20px 45px rgba(0, 0, 0, 0.35);
 }
 
-.contact-form-container {
+.contact-form-container,
+.comments-container,
+.animal-test-container {
     width: 90%;
     max-width: 600px;
     margin: 40px auto;
@@ -102,9 +104,60 @@ header p {
     transition: background-color 0.3s ease;
 }
 
-.contact-form-container h2 {
+.contact-form-container h2,
+.comments-container h2,
+.animal-test-container h2 {
     color: var(--title-color);
     margin-top: 0;
+}
+
+#test-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#webcam-container {
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background: #000;
+    line-height: 0;
+}
+
+#label-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.prediction-bar-container {
+    width: 100%;
+    background-color: var(--background-color);
+    border-radius: 10px;
+    height: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.prediction-bar {
+    height: 100%;
+    background-color: var(--bitcoin-color);
+    width: 0%;
+    transition: width 0.2s ease;
+}
+
+.prediction-text {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-weight: 600;
+    font-size: 0.9em;
+    color: var(--text-color);
+    z-index: 1;
 }
 
 .contact-form-container p {

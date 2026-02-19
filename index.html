@@ -9,6 +9,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <button id="theme-toggle">Switch to Light Mode</button>
@@ -20,6 +22,19 @@
         <div class="chart-container">
             <canvas id="asset-chart"></canvas>
         </div>
+
+        <section class="animal-test-container">
+            <h2>Animal Face Test</h2>
+            <p>Upload a photo to see if you're more like a Dog or a Cat!</p>
+            <div id="test-wrapper">
+                <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
+                <button type="button" id="upload-btn" class="submit-btn" onclick="document.getElementById('image-upload').click()">Upload Image</button>
+                <div id="image-preview-container" style="display: none; margin-top: 20px;">
+                    <img id="image-preview" src="#" alt="Your photo" style="max-width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+                </div>
+                <div id="label-container" style="margin-top: 20px;"></div>
+            </div>
+        </section>
 
         <section class="contact-form-container">
             <h2>Partnership Inquiry</h2>
@@ -36,8 +51,32 @@
                 <button type="submit" class="submit-btn">Send Message</button>
             </form>
         </section>
+
+        <section class="comments-container">
+            <h2>Comments</h2>
+            <div id="disqus_thread"></div>
+            <script>
+                /**
+                *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                /*
+                var disqus_config = function () {
+                this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+                this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                };
+                */
+                (function() { // DON'T EDIT BELOW THIS LINE
+                var d = document, s = d.createElement('script');
+                s.src = 'https://assetrate.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        </section>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="animal-test.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
