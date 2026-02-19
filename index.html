@@ -69,6 +69,18 @@
         </section>
 
         <div class="chart-container">
+            <div class="analysis-controls">
+                <input type="number" id="year-input" min="2014" max="2024" placeholder="Enter Year (2014-2024)">
+                <button id="analyze-btn" class="action-btn">AI Analyze</button>
+                <button id="reset-btn" class="action-btn secondary">Reset View</button>
+            </div>
+            <div id="ai-analysis-result" class="ai-box" style="display: none;">
+                <div class="ai-header">
+                    <span class="ai-icon">🤖</span>
+                    <h4>AI Liquidity Correlation Insights</h4>
+                </div>
+                <p id="analysis-text"></p>
+            </div>
             <canvas id="asset-chart"></canvas>
         </div>
 

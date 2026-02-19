@@ -146,3 +146,76 @@ themeToggle.addEventListener('click', () => {
     
     setTimeout(updateChartTheme, 50);
 });
+
+// AI Analysis and Zoom Logic
+const analyzeBtn = document.getElementById('analyze-btn');
+const resetBtn = document.getElementById('reset-btn');
+const yearInput = document.getElementById('year-input');
+const aiBox = document.getElementById('ai-analysis-result');
+const analysisText = document.getElementById('analysis-text');
+
+function getGrowth(data, index) {
+    if (index === 0) return 0;
+    return ((data[index] - data[index - 1]) / data[index - 1] * 100).toFixed(1);
+}
+
+function analyzeYear() {
+    const targetYear = parseInt(yearInput.value);
+    const index = years.indexOf(targetYear);
+
+    if (index === -1) {
+        alert('Please enter a year between 2014 and 2024.');
+        return;
+    }
+
+    if (index === 0) {
+        analysisText.innerHTML = `Data for <strong>${targetYear}</strong> is our baseline (100%). Please select a year from 2015 onwards to see Year-over-Year growth analysis.`;
+        aiBox.style.display = 'block';
+        return;
+    }
+
+    // Growth calculations (YoY)
+    const m2Growth = getGrowth(m2Data, index);
+    const btcGrowth = getGrowth(bitcoinData, index);
+    const spGrowth = getGrowth(sp500Data, index);
+    const reGrowth = getGrowth(reData, index);
+    const goldGrowth = getGrowth(goldData, index);
+
+    let insight = `### ${targetYear} AI Liquidity Correlation Report\n\n`;
+    insight += `Compared to the previous year, the **Money Supply (M2)** expanded by **${m2Growth}%**. \n\n`;
+    insight += `**Asset Performance:**\n`;
+    insight += `- **Bitcoin:** ${btcGrowth}% \n`;
+    insight += `- **S&P 500:** ${spGrowth}% \n`;
+    insight += `- **Real Estate:** ${reGrowth}% \n`;
+    insight += `- **Gold:** ${goldGrowth}% \n\n`;
+
+    // Correlation Analysis Logic
+    insight += `**AI Analysis:** `;
+    if (parseFloat(m2Growth) > 8) {
+        insight += `The significant increase in M2 (**${m2Growth}%**) created a high-liquidity environment. As expected, the "extra money" flowed into scarce assets. **Bitcoin**, being the most sensitive to liquidity, captured this expansion with a massive **${btcGrowth}%** move, significantly outperforming traditional assets.`;
+    } else if (parseFloat(m2Growth) > 0) {
+        insight += `Moderate M2 growth of **${m2Growth}%** provided steady support for asset prices. The growth in S&P 500 (**${spGrowth}%**) and Real Estate (**${reGrowth}%**) shows a healthy absorption of new capital into the economy.`;
+    } else {
+        insight += `M2 growth was stagnant or negative (**${m2Growth}%**). This reduction in market liquidity typically puts downward pressure on risk assets, which is reflected in the more subdued or negative performance of the markers this year.`;
+    }
+
+    // Format for HTML
+    analysisText.innerHTML = insight
+        .replace(/\n/g, '<br>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+        .replace(/### (.*?)<br>/g, '<strong>$1</strong><br>');
+    
+    aiBox.style.display = 'block';
+    
+    // No more zooming, just show the data
+}
+
+function resetChart() {
+    aiBox.style.display = 'none';
+    yearInput.value = '';
+    // No changes to chart scales
+    chart.update();
+}
+
+analyzeBtn.addEventListener('click', analyzeYear);
+resetBtn.addEventListener('click', resetChart);
