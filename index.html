@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-Year Asset Growth Comparison</title>
+    <title>12-Year Asset Growth Comparison (2014-2026)</title>
     <meta name="google-adsense-account" content="ca-pub-4185557120228393">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4185557120228393"
      crossorigin="anonymous"></script>
@@ -12,8 +12,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
     <button id="theme-toggle">Switch to Light Mode</button>
@@ -27,13 +25,13 @@
     </nav>
 
     <header>
-        <h1>10-Year Asset Growth Comparison</h1>
-        <p>Analyzing Bitcoin, Gold, and the S&P 500 Market Performance</p>
+        <h1>12-Year Asset Growth Comparison</h1>
+        <p>Analyzing Bitcoin, Gold, and the S&P 500 Performance (2014 - 2026)</p>
     </header>
     <main>
         <section class="content-text-section">
-            <h2>Understanding Asset Growth Over a Decade</h2>
-            <p>Choosing where to invest requires a long-term perspective. Over the last 10 years, we have seen unprecedented volatility and growth across different asset classes. This tool provides a comparative visualization of three distinct pillars of the financial world: <strong>Bitcoin</strong> (Digital Asset), <strong>Gold</strong> (Traditional Store of Value), and the <strong>S&P 500</strong> (Equity Market Benchmark).</p>
+            <h2>Understanding Asset Growth Over 12 Years</h2>
+            <p>Choosing where to invest requires a long-term perspective. From 2014 to 2026, we have seen unprecedented volatility and growth across different asset classes. This tool provides a comparative visualization of three distinct pillars of the financial world: <strong>Bitcoin</strong> (Digital Asset), <strong>Gold</strong> (Traditional Store of Value), and the <strong>S&P 500</strong> (Equity Market Benchmark).</p>
         </section>
 
         <div class="chart-container">
@@ -47,22 +45,6 @@
                 <li><strong>Gold:</strong> Traditionally used as a hedge against inflation, gold maintains a steady, albeit slower, growth trajectory compared to high-risk assets.</li>
                 <li><strong>S&P 500:</strong> Representing the 500 largest companies in the US, it serves as a reliable indicator of corporate health and economic expansion.</li>
             </ul>
-        </section>
-
-        <section class="animal-test-container">
-            <h2>AI-Powered Animal Face Test</h2>
-            <p>Our interactive animal face test uses the latest Teachable Machine AI models to analyze facial features and determine which animal aesthetic you resemble most. Whether you have the sharp, independent gaze of a cat or the warm, loyal expression of a dog, our AI provides an instant, fun analysis.</p>
-            <div id="test-wrapper">
-                <input type="file" id="image-upload" accept="image/*" style="display: none;" onchange="handleImageUpload(event)">
-                <button type="button" id="upload-btn" class="submit-btn" onclick="document.getElementById('image-upload').click()">Upload Image</button>
-                <div id="image-preview-container" style="display: none; margin-top: 20px;">
-                    <img id="image-preview" src="#" alt="Your photo" style="max-width: 100%; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-                </div>
-                <div id="label-container" style="margin-top: 20px;"></div>
-            </div>
-            <div class="test-description" style="margin-top: 20px; font-size: 0.9em; color: var(--subtitle-color);">
-                <p>Note: Your privacy is important. Image processing happens locally in your browser, and no images are stored on our servers.</p>
-            </div>
         </section>
 
         <section class="contact-form-container">
@@ -116,7 +98,6 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="animal-test.js"></script>
     <script src="main.js"></script>
 </body>
 </html>
